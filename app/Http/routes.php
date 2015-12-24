@@ -12,23 +12,27 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Route::get('list', function () {
     return view('list');
 });
 
+
 Route::post('home','Home@index');
 
-Route::get('home/', function(){
+Route::get('home', function(){
     echo "get";
+});
+
+Route::group(['prefix' => 'admin','namespace'=>'Manage'], function () {
+    Route::get('home','ArticleController@create');
 });
 
 Route::get('home/{id}', 'ArticleController@show');
 
 Route::get('get_ah',function(){
-
     $home = App\Author::where('author_id','=','1')->first();
     echo "ah`s first article name is ".$home -> name;
 });
@@ -36,7 +40,6 @@ Route::get('get_ah',function(){
 Route::get('article',function(){
     $articles = App\Article::all();
     foreach ($articles as $article) {
-        // $author = App\Author::find($article->author_id);
         echo $article->name . '||' . $article->author->name . '<br />';
     }
 });
