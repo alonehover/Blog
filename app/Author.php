@@ -12,4 +12,4 @@ class Author extends Model{
     }
 }
 
- ?>
+?>
