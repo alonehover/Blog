@@ -1,11 +1,7 @@
-// var gravatar = require('gravatar');
-// var moment = require('moment');
-
 var User = require('../models/user');
-// var Post = require('../models/post');
-// var exception = require('../lib/exception');
 var md5 = require('../lib/md5');
 
+// 检测登陆状态
 function checkLogin(req, res, next) {
   if (!req.session.user) {
     req.flash('info', '未登录!');
@@ -13,6 +9,7 @@ function checkLogin(req, res, next) {
   }
   next();
 }
+
 
 function checkNotLogin(req, res, next) {
   if (req.session.user) {
@@ -61,22 +58,20 @@ module.exports = function (app) {
     User.get(name, function (err, user) {
       if (err) {
         console.log(err);
+        return next(err);
       }
       if (user) {
         req.flash('info', '用户已存在!');
         return res.redirect('/reg');
       }
-      console.log(user);
-
 
       var newUser = {
           name: name,
           password: md5(password),
           email: email,
-          // avatar: gravatar.url(email, {s: 48})
       };
 
-      console.log("准备插入");
+      console.log("准备插入数据");
       User.save(newUser, function (err) {
         if (err) {
           console.log('存储失败！');
@@ -134,6 +129,11 @@ module.exports = function (app) {
     req.session.user = null;
     req.flash('info', '登出成功!');
     res.redirect('/');
+  });
+
+
+  app.get('/post', function(req,res,next){
+    
   });
 
 

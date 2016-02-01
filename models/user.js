@@ -1,11 +1,10 @@
-var mongodb = require('./db');
+var mongodb = require('../lib/db');
 var assert = require('assert');
 
 exports.save = function(user, callback){
 
     mongodb(function(db){
 
-        // console.log(user);
         db.collection('users').insertOne(user, function(err, result){
             db.close();
             if (err) {
@@ -20,15 +19,13 @@ exports.save = function(user, callback){
 exports.get = function(name, callback){
 
     mongodb(function(db){
-        
+
         var users =db.collection('users').find({"name":name});
-        // var users =db.collection('users').find();
-        
-        // console.log(users);
+
         users.each(function(err, doc){
 
             assert.equal(err, null);
-            
+
             if (doc != null) {
 
                 callback(null, doc);
@@ -38,6 +35,6 @@ exports.get = function(name, callback){
             }
 
         });
-        
+
     });
 }
