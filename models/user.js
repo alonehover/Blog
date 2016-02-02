@@ -20,20 +20,12 @@ exports.get = function(name, callback){
 
     mongodb(function(db){
 
-        var users =db.collection('users').find({"name":name});
-
-        users.each(function(err, doc){
-
-            assert.equal(err, null);
-
-            if (doc != null) {
-
-                callback(null, doc);
-
-            }else{
-                callback(null);
+        db.collection('users').findOne({"name":name},function(err,result){
+            db.close();
+            if (err) {
+                return callback(err);
             }
-
+            callback(null, result);
         });
 
     });

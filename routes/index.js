@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Article = require('../models/article');
 var md5 = require('../lib/md5');
 
 // 检测登陆状态
@@ -23,10 +24,17 @@ module.exports = function (app) {
 
   // 主页
   app.get('/', function (req, res, next) {
-        res.render('index', {
-          title: '主页',
-          user: req.session.user,
-          flash: req.flash('info').toString()
+        Article.getList(function(err,list){
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            res.render('index', {
+              title: '主页',
+              user: req.session.user,
+              flash: req.flash('info').toString(),
+              list: list
+            });
         });
   });
 
@@ -105,7 +113,10 @@ module.exports = function (app) {
       if (err) {
         return next(err);
       }
+      if (user != null) {
 
+      }
+      console.log(user);
       if (!user) {
         req.flash('info', '用户不存在!');
         return res.redirect('/login');
@@ -131,12 +142,50 @@ module.exports = function (app) {
     res.redirect('/');
   });
 
-
+  //  文章添加
   app.get('/post', function(req,res,next){
-    
+      res.render('article/add',{
+          title : "写文章",
+          user : req.session.user,
+          flash: req.flash('info').toString()
+      });
   });
 
+  // 文章添加操作
+  app.post('/post', function(req,res,next){
+        var body = req.body;
+        var data = {
+            title : body.title,
+            content : body.content
+        };
 
+        Article.save(data, function(err, result){
+            if (err) {
+              console.log('存储失败！');
+              return next(err);
+            }
+            req.flash('info', '添加成功!');
+            res.redirect('/');
+        });
+  });
+
+  //  显示文章详情
+  app.get('/post/:aid', function(req,res,next){
+      var id = req.params.aid;
+      var user = req.session.user;;
+      Article.getOne(id, function(err, result){
+          if (err) {
+              return next(err);
+          }
+          res.render('article/show',{
+              title : result.title,
+              content : result.content,
+              user : user,
+              flash : req.flash('info').toString()
+          });
+      });
+
+  });
 
   app.use(function (req, res, next) {
     next({
@@ -152,4 +201,5 @@ module.exports = function (app) {
       res.render('error', { error: err });
     }
   });
+
 };

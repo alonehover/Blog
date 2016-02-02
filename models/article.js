@@ -1,0 +1,58 @@
+var mongodb = require('../lib/db');
+var ObjectID = require('mongodb').ObjectID;
+
+// 存文章
+exports.save = function(article, callback){
+
+    mongodb(function(db){
+
+        db.collection('articles').insertOne(article, function(err, result){
+            db.close();
+            if (err) {
+                return callback(err);
+            }
+            callback(null, result);  //成功！err 为 null，并返回存储后的用户文档
+        });
+
+    });
+};
+
+// 获取文章详情
+exports.getOne = function(aid, callback){
+    mongodb(function(db){
+
+        db.collection('articles').findOne({"_id": new ObjectID(aid)},function(err, result){
+            db.close();
+            if (err) {
+                return callback(err);
+            }
+            callback(null, result);
+        });
+
+    });
+};
+
+// 获取文章列表
+exports.getList = function(callback){
+
+    mongodb(function(db){
+
+        db.collection('articles').find().toArray(function(err, result){
+            if (err) {
+                return callback(err);
+            }
+            console.log(result);
+            callback(null, result);
+        });
+    });
+};
+
+// 编辑文章
+exports.updateArticle = function(id, article, callback){
+
+    mongodb(function(db){
+
+        db.collection('articles').find();
+
+    });
+};
