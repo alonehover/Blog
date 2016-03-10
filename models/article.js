@@ -41,7 +41,6 @@ exports.getList = function(callback){
             if (err) {
                 return callback(err);
             }
-            console.log(result);
             callback(null, result);
         });
     });
@@ -52,7 +51,22 @@ exports.updateArticle = function(id, article, callback){
 
     mongodb(function(db){
 
-        db.collection('articles').find();
+        db.collection('articles').updateOne(
+          {"_id": new ObjectID(aid)},
+          {
+            $set: {
+              "title": article.title,
+              "content": article.content
+            },
+            $currentDate: { "lastModified": true }
+          },
+          function(err, result){
+            db.close();
+            if (err) {
+                return callback(err);
+            }
+            callback(null, result);
+        });
 
     });
 };

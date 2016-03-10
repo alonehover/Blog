@@ -1,11 +1,11 @@
 <%- include header %>
 
-<% if (list) { %>
+<% if (list.length > 0) { %>
     <% for (var i = 0; i < list.length; i++){ %>
         <div><a href="/post/<%= list[i]._id %>"><%= list[i].title %></a></div>
     <% } %>
 <% }else { %>
-    <a href="/post">添加文章</a>
+    还木有文章～～～
 <% } %>
 
 <%- include footer %>

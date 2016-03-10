@@ -1,6 +1,7 @@
 var User = require('../models/user');
 var Article = require('../models/article');
 var md5 = require('../lib/md5');
+var marked = require('marked');
 
 // 检测登陆状态
 function checkLogin(req, res, next) {
@@ -143,6 +144,7 @@ module.exports = function (app) {
   });
 
   //  文章添加
+  app.get('/post', checkLogin);
   app.get('/post', function(req,res,next){
       res.render('article/add',{
           title : "写文章",
@@ -152,6 +154,7 @@ module.exports = function (app) {
   });
 
   // 文章添加操作
+  app.get('/post', checkLogin);
   app.post('/post', function(req,res,next){
         var body = req.body;
         var data = {
@@ -179,7 +182,7 @@ module.exports = function (app) {
           }
           res.render('article/show',{
               title : result.title,
-              content : result.content,
+              content : marked(result.content),
               user : user,
               flash : req.flash('info').toString()
           });
