@@ -154,7 +154,7 @@ module.exports = function (app) {
   });
 
   // 文章添加操作
-  app.get('/post', checkLogin);
+  app.post('/post', checkLogin);
   app.post('/post', function(req,res,next){
         var body = req.body;
         var data = {
@@ -175,12 +175,13 @@ module.exports = function (app) {
   //  显示文章详情
   app.get('/post/:aid', function(req,res,next){
       var id = req.params.aid;
-      var user = req.session.user;;
+      var user = req.session.user;
       Article.getOne(id, function(err, result){
           if (err) {
               return next(err);
           }
           res.render('article/show',{
+              article_id : id,
               title : result.title,
               content : marked(result.content),
               user : user,
@@ -188,6 +189,60 @@ module.exports = function (app) {
           });
       });
 
+  });
+
+  //  显示文章编辑
+  app.get('/edit/:aid', checkLogin);
+  app.get('/edit/:aid', function(req,res,next){
+      var id = req.params.aid;
+      var user = req.session.user;;
+      Article.getOne(id, function(err, result){
+          if (err) {
+              return next(err);
+          }
+          res.render('article/edit',{
+              title : result.title,
+              content : result.content,
+              user : user,
+              flash : req.flash('info').toString()
+          });
+      });
+
+  });
+
+  // 提交文章编辑内容
+  app.post('/edit/:aid', checkLogin);
+  app.post('/edit/:aid', function(req,res,next){
+        var id = req.params.aid;
+        var body = req.body;
+        var data = {
+            title : body.title,
+            content : body.content
+        };
+
+        Article.updateArticle(id, data, function(err, result){
+            if (err) {
+              console.log('修改失败！');
+              return next(err);
+            }
+            req.flash('info', '编辑成功!');
+            res.redirect('/post/:' + id);
+        });
+  });
+
+  // 删除文章
+  app.get('/del/:aid', checkLogin);
+  app.get('/del/:aid', function(req,res,next){
+        var id = req.params.aid;
+
+        Article.deleteArticle(id, function(err, result){
+            if (err) {
+              console.log('删除失败！');
+              return next(err);
+            }
+            req.flash('info', '删除成功!');
+            res.redirect('/');
+        });
   });
 
   app.use(function (req, res, next) {

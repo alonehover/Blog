@@ -47,7 +47,7 @@ exports.getList = function(callback){
 };
 
 // 编辑文章
-exports.updateArticle = function(id, article, callback){
+exports.updateArticle = function(aid, article, callback){
 
     mongodb(function(db){
 
@@ -65,6 +65,25 @@ exports.updateArticle = function(id, article, callback){
             if (err) {
                 return callback(err);
             }
+            callback(null, result);
+        });
+
+    });
+};
+
+// 删除文章
+exports.deleteArticle = function(aid, callback){
+
+    mongodb(function(db){
+
+        db.collection('articles').deleteOne(
+          {"_id": new ObjectID(aid)},
+          function(err, result){
+            db.close();
+            if (err) {
+                return callback(err);
+            }
+            console.log(result);
             callback(null, result);
         });
 
