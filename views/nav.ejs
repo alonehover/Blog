@@ -3,7 +3,7 @@
     <% if (user) { %>
     <span><a title="发表" href="/post">Add</a></span>
     <div class="user-info">
-        <span>User: <%= user.name %></span>
+        <span><%= user.name %></span>
         <span><a title="登出" href="/logout">logout</a></span>
     </div>
     <% } else { %>

@@ -27,7 +27,7 @@ nav {
 }
 nav a {
     text-decoration: none;
-    padding: .7em 1em;
+    padding: .7em .5em;
     color: #000000;
 }
 nav a:hover {
