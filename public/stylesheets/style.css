@@ -100,6 +100,12 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
 .card-list .item-title{
     display: block;
     margin: 10px 0 0;
+    color: #259;
+}
+
+.card-list .item-header{
+    font-size: 14px;
+    color: #999;
 }
 
 .article-content{
