@@ -7,23 +7,7 @@
 <link rel="stylesheet" href="/stylesheets/markdown.css" rel="stylesheet"></link>
 </head>
 <body>
-
-<nav>
-    <span><a title="主页" href="/">home</a></span>
-    <% if (user) { %>
-    <span><a title="发表" href="/post">Add</a></span>
-    <div class="user-info">
-        <span>User: <%= user.name %></span>
-        <span><a title="登出" href="/logout">logout</a></span>
-    </div>
-    <% } else { %>
-    <div class="user-info">
-        <span><a title="登录" href="/login">login</a></span>
-        <!-- <span><a title="注册" href="/reg">register</a></span> -->
-    </div>
-    <% } %>
-</nav>
-
+<%- include nav %>
 <% if (flash) { %>
-  <div style="color:red"><%= flash %></div>
+  <div class="container" style="color:red"><%= flash %></div>
 <% } %>
