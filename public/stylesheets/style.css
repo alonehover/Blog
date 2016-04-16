@@ -20,7 +20,7 @@ header {
 nav {
     font-size: 1.1em;
     text-transform: uppercase;
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px 0;
     text-align: left;
@@ -42,7 +42,7 @@ article a {
     text-decoration: none;
 }
 .container{
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
 }
 .login{
