@@ -85,6 +85,10 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
     float: right;
 }
 
+.message{
+    padding: 10px 0;
+}
+
 .card-list{
     background-color: #fff;
     padding: 15px;
