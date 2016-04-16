@@ -37,7 +37,7 @@ exports.getList = function(callback){
 
     mongodb(function(db){
 
-        db.collection('articles').find().toArray(function(err, result){
+        db.collection('articles').find().sort({_id:-1}).toArray(function(err, result){
             if (err) {
                 return callback(err);
             }
