@@ -114,9 +114,9 @@ module.exports = function (app) {
       if (err) {
         return next(err);
       }
-      if (user != null) {
-
-      }
+    //   if (user != null) {
+      //
+    //   }
       console.log(user);
       if (!user) {
         req.flash('info', '用户不存在!');
@@ -157,9 +157,11 @@ module.exports = function (app) {
   app.post('/post', checkLogin);
   app.post('/post', function(req,res,next){
         var body = req.body;
+        var user = req.session.user;
         var data = {
             title : body.title,
-            content : body.content
+            content : body.content,
+            author : user.name
         };
 
         Article.save(data, function(err, result){
@@ -195,7 +197,7 @@ module.exports = function (app) {
   app.get('/edit/:aid', checkLogin);
   app.get('/edit/:aid', function(req,res,next){
       var id = req.params.aid;
-      var user = req.session.user;;
+      var user = req.session.user;
       Article.getOne(id, function(err, result){
           if (err) {
               return next(err);
@@ -215,9 +217,11 @@ module.exports = function (app) {
   app.post('/edit/:aid', function(req,res,next){
         var id = req.params.aid;
         var body = req.body;
+        var user = req.session.user;
         var data = {
             title : body.title,
-            content : body.content
+            content : body.content,
+            author : user.name
         };
 
         Article.updateArticle(id, data, function(err, result){
@@ -226,7 +230,7 @@ module.exports = function (app) {
               return next(err);
             }
             req.flash('info', '编辑成功!');
-            res.redirect('/post/:' + id);
+            res.redirect('/post/' + id);
         });
   });
 

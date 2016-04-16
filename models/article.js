@@ -56,7 +56,8 @@ exports.updateArticle = function(aid, article, callback){
           {
             $set: {
               "title": article.title,
-              "content": article.content
+              "content": article.content,
+              "author" : article.author
             },
             $currentDate: { "lastModified": true }
           },

@@ -1,13 +1,16 @@
 <%- include ../header %>
 
-<div class="">
-    <%- content %>
+<div class="container">
+    <div class="markdown-body article-content">
+        <%- content %>
+    </div>
+
+    <p>
+      <% if(user) {%>
+        <a href="/edit/<%= article_id %>">编辑</a>
+        <a href="/del/<%= article_id %>">删除</a>
+      <% } %>
+    </p>
 </div>
 
-<p>
-  <% if(user) {%>
-    <a href="/edit/<%= article_id %>">编辑</a>
-    <a href="/del/<%= article_id %>">删除</a>
-  <% } %>
-</p>
 <%- include ../footer %>

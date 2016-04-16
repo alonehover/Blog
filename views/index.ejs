@@ -1,11 +1,23 @@
 <%- include header %>
 
+<article class="container">
 <% if (list.length > 0) { %>
     <% for (var i = 0; i < list.length; i++){ %>
-        <div><a href="/post/<%= list[i]._id %>"><%= list[i].title %></a></div>
+        <div class="card-list" data-item-id="<%= list[i]._id %>">
+            <div class="content">
+                <div class="item-header">
+                    <b><%= list[i].author  %></b>
+                    <small class="item-date">. 2016.04.16</small>
+                </div>
+                <div class="item-text-container">
+                    <p class="item-title"><%= list[i].title %></p>
+                </div>
+            </div>
+        </div>
     <% } %>
 <% }else { %>
     还木有文章～～～
 <% } %>
+</article>
 
 <%- include footer %>

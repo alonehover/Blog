@@ -4,11 +4,10 @@
     box-sizing: border-box;
 }
 body {
-    width: 600px;
-    margin: 2em auto;
     padding: 0 2em;
     font-size: 14px;
     font-family: "Microsoft YaHei";
+    background-color: #f5f8fa;
 }
 p {
     line-height: 24px;
@@ -19,16 +18,14 @@ header {
     border-bottom: 1px solid #cccccc;
 }
 nav {
-    float: left;
-    font-family: "Microsoft YaHei";
     font-size: 1.1em;
     text-transform: uppercase;
-    margin-left: -12em;
-    width: 9em;
-    text-align: right;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: left;
 }
 nav a {
-    display: block;
     text-decoration: none;
     padding: .7em 1em;
     color: #000000;
@@ -40,15 +37,13 @@ nav a:hover {
 }
 article {
     font-size: 16px;
-    padding-top: .5em;
 }
 article a {
-    color: #dd0000;
     text-decoration: none;
 }
-article a:hover {
-    color: #333333;
-    text-decoration: underline;
+.container{
+    width: 600px;
+    margin: 0 auto;
 }
 .info {
     font-size: 14px;
@@ -79,4 +74,35 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
 }
 .btn:hover{
     background: #ddd;
+}
+
+.user-info{
+    float: right;
+}
+
+.card-list{
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    -webkit-transition: background-color .2s linear;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+}
+
+.card-list:hover{
+    cursor: pointer;
+    background-color: #f5f8fa;
+}
+
+.card-list .item-date{
+    color: #8899a6;
+}
+
+.card-list .item-title{
+    display: block;
+    margin: 10px 0 0;
+}
+
+.article-content{
+    background-color: #fff;
+    padding: 20px 10px;
 }

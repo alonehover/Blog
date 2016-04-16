@@ -13,6 +13,7 @@ exports.save = function (user, data, cb) {
       tags[tag.toLowerCase()] = 1;
     }
   });
+  console.log(user);
   var doc = {
     name: user.name,
     avatar: user.avatar,
@@ -20,6 +21,7 @@ exports.save = function (user, data, cb) {
     title: data.title,
     tags: Object.keys(tags),
     content: data.content,
+    author: data.author,
     comments: [],
     pv: 0
   };
