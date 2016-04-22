@@ -146,10 +146,8 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
 }
 
 .footer{
-    position: absolute;
+    position: relative;;
     background-color: #eee;
     color: #000;
-    bottom: 0;
-    left: 0;
     width: 100%;
 }
