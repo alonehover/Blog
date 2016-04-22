@@ -139,6 +139,7 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
 .article-content{
     background-color: #fff;
     padding: 20px 10px;
+    margin-top: 20px;
 }
 
 .card-list:hover .item-title,.card-list:hover .item-header,.card-list:hover .item-date{
