@@ -46,7 +46,7 @@ nav a {
 .nav-item:hover {
     border-bottom: 3px solid #000;
     color: #f9f9f9;
-    -webkit-transition: border-bottom .5s linear;
+    -webkit-transition: border-bottom 1s linear;
 }
 article {
     padding-top: 20px;
@@ -115,6 +115,7 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
     cursor: pointer;
     background-color: #03a9f4;
     color: #fff;
+    -webkit-transition: background-color .2s linear;
 }
 
 .card-list .content{
