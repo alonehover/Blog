@@ -1,15 +1,17 @@
-<nav>
-    <span><a title="主页" href="/">home</a></span>
-    <% if (user) { %>
-    <span><a title="发表" href="/post">Add</a></span>
-    <div class="user-info">
-        <span><%= user.name %></span>
-        <span><a title="登出" href="/logout">logout</a></span>
-    </div>
-    <% } else { %>
-    <div class="user-info">
-        <span><a title="登录" href="/login">login</a></span>
-        <!-- <span><a title="注册" href="/reg">register</a></span> -->
-    </div>
-    <% } %>
+<nav class="blue">
+    <section class="container">
+        <div class="nav-item"><a title="主页" href="/">home</a></div>
+        <% if (user) { %>
+        <div class="nav-item"><a title="发表" href="/post">Add</a></div>
+        <div class="user-info">
+            <div class="nav-item"><%= user.name %></div>
+            <div class="nav-item"><a title="登出" href="/logout">logout</a></div>
+        </div>
+        <% } else { %>
+        <div class="user-info">
+            <div class="nav-item"><a title="登录" href="/login">login</a></div>
+            <!-- <span><a title="注册" href="/reg">register</a></span> -->
+        </div>
+        <% } %>
+    </section>
 </nav>
