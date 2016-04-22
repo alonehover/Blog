@@ -151,3 +151,8 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
     color: #000;
     width: 100%;
 }
+
+.footer p{
+    margin: 0;
+    line-height: 32px;
+}
