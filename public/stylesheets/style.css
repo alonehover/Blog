@@ -130,11 +130,16 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
     display: block;
     margin: 10px 0 0;
     color: #259;
+	font-size: 21px;
 }
 
 .card-list .item-header{
     font-size: 14px;
     color: #999;
+}
+
+.article-title{
+	padding:0 10px 10px;
 }
 
 .article-content{
