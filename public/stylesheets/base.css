@@ -9,3 +9,15 @@
 .txt-center{
     text-align: center;
 }
+
+.txt-margin-s{
+    margin: 0 10px;
+}
+
+.m-top-xs{
+    margin-top: 10px;
+}
+
+.m-top-s{
+    margin-top: 20px;
+}

@@ -1,3 +1,4 @@
+var moment = require('moment');
 var mongodb = require('../lib/db');
 var ObjectID = require('mongodb').ObjectID;
 
@@ -57,7 +58,8 @@ exports.updateArticle = function(aid, article, callback){
             $set: {
               "title": article.title,
               "content": article.content,
-              "author" : article.author
+              "update_author" : article.author,
+              "update_time": moment().format('YYYY-MM-DD HH:mm:ss')
             },
             $currentDate: { "lastModified": true }
           },

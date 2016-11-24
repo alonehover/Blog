@@ -7,9 +7,9 @@
              <div class="content item-title">
                  <%= list[i].title %>
              </div>
-			 <div class="item-header">
+			 <div class="item-header m-top-xs">
                  <b><%= list[i].author  %></b>
-                 <small class="item-date">. 2016.04.16</small>
+                 <small class="item-date">  <%= list[i].update_time %></small>
              </div>
         </div>
     <% } %>
@@ -17,3 +17,5 @@
     <div class="txt-center">还木有文章噢～～～</div>
 <% } %>
 </article>
+
+<%- include footer %>

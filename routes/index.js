@@ -2,6 +2,7 @@ var User = require('../models/user');
 var Article = require('../models/article');
 var md5 = require('../lib/md5');
 var marked = require('marked');
+var moment = require('moment');
 
 // 检测登陆状态
 function checkLogin(req, res, next) {
@@ -161,7 +162,9 @@ module.exports = function (app) {
         var data = {
             title : body.title,
             content : body.content,
-            author : user.name
+            author : user.name,
+            creat_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+            update_time: moment().format('YYYY-MM-DD HH:mm:ss'),
         };
 
         Article.save(data, function(err, result){
@@ -182,10 +185,13 @@ module.exports = function (app) {
           if (err) {
               return next(err);
           }
+          console.log(result);
           res.render('article/show',{
               article_id : id,
               title : result.title,
+              author: result.author,
               content : marked(result.content),
+              update_time: result.update_time,
               user : user,
               flash : req.flash('info').toString()
           });
