@@ -4,18 +4,15 @@
     box-sizing: border-box;
 }
 
-.blue{
-    background-color: #039BE5;
-}
-
-.container{
-    max-width: 800px;
-    margin: 0 auto;
+html, body{
+    height: 100%;
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
 }
 
 body {
-    font-size: 14px;
-    font-family: "Microsoft YaHei";
+    padding-top: 80px;
+    padding-bottom: 120px;
     background-color: #f9f9f9;
 }
 p {
@@ -29,15 +26,36 @@ header {
 nav {
     font-size: 1.1em;
     text-transform: uppercase;
-    /*padding: 20px 0;*/
     text-align: left;
     color: #fff;
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 nav a {
     text-decoration: none;
     color: #fff;
 }
+
+input:active,
+input:focus,
+textarea:active,
+textarea:focus,
+button:active,
+button:focus{
+    outline: none;
+}
+
+.blue{
+    background-color: #039BE5;
+}
+
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .nav-item{
     padding: 20px 10px;
     float: left;
@@ -57,9 +75,9 @@ article a {
     text-decoration: none;
 }
 
-.login{
+.sign{
     padding-top: 40px;
-    width: 300px;
+    width: 360px;
     margin: 0 auto;
 }
 .info {
@@ -70,10 +88,6 @@ article a {
     margin-bottom: 10px;
 }
 
-input:active,input:focus,textarea:active,textarea:focus,button:active,button:focus{
-    outline: none;
-}
-
 .form-group .form-control{
     border: 1px solid #ddd;
     padding: 5px;
@@ -81,16 +95,22 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
     max-width: 100%;
 }
 .form-group input.form-control{
-    line-height: 24px;
+    line-height: 40px;
+    font-size: 24px
 }
 .btn{
     padding: 5px 10px;
-    background: #eee;
-    border: 1px solid #ccc;
+    background: #28b9ff;
+    color: #fff;
+    border: 1px solid #fff;
     cursor: pointer;
+    width: 80px;
+    height: 40px;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
 }
 .btn:hover{
-    background: #ddd;
+    background: #189ede;
 }
 
 .user-info{
@@ -99,6 +119,7 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
 
 .message{
     padding: 10px 0;
+    text-align: center;
 }
 
 .card-list{
@@ -152,7 +173,8 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
 }
 
 .footer{
-    position: relative;;
+    position: fixed;
+    bottom: 0;
     background-color: #eee;
     color: #000;
     width: 100%;
@@ -163,4 +185,9 @@ input:active,input:focus,textarea:active,textarea:focus,button:active,button:foc
 .footer p{
     margin: 0;
     line-height: 32px;
+}
+
+
+.main{
+    height: 100%;
 }

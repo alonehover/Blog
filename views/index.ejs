@@ -1,6 +1,6 @@
 <%- include header %>
 
-<article class="container">
+<article class="container main">
 <% if (list.length > 0) { %>
     <% for (var i = 0; i < list.length; i++){ %>
         <div class="card-list" data-item-id="<%= list[i]._id %>">
@@ -14,7 +14,7 @@
         </div>
     <% } %>
 <% }else { %>
-    还木有文章～～～
+    <div class="txt-center">还木有文章噢～～～</div>
 <% } %>
 </article>
 

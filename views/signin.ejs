@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-<title>Blog</title>
-<link rel="stylesheet" href="/stylesheets/style.css">
-<link rel="stylesheet" href="/stylesheets/markdown.css" rel="stylesheet"></link>
-</head>
-<body>
+<%- include header %>
 
-<div class="login">
+<div class="sign main">
     <form method="post">
         <div class="form-group">
             <input class="form-control" type="text" name="name" placeholder="user name"/>
@@ -17,7 +8,7 @@
         <div class="form-group">
             <input class="form-control" type="password" name="password" placeholder="password"/>
         </div>
-        <div class="form-group">
+        <div class="form-group txt-right">
             <input class="btn" type="submit" value="登录"/>
         </div>
     </form>
