@@ -12,7 +12,7 @@
 
 	<div class="m-top-s">
 		<span><%- author %></span><span  class="txt-margin-s"><%- update_time %></span>
-		<% if( user.name == author) {%>
+		<% if(user && user.name == author) {%>
 		  <a class="txt-margin-s" href="/edit/<%= article_id %>">编辑</a>
 		  <a class="txt-margin-s" href="/del/<%= article_id %>">删除</a>
 		<% } %>
