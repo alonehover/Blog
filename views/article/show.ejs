@@ -2,24 +2,23 @@
 
 <article class="container">
 
-	<div class="article-title">
-		<h1><%- title %></h1>
+	<div class="article-header">
+		<h1 class="article-title"><%- title %></h1>
+		<div class="article-info">			
+			<span><%- author %></span><span  class="txt-margin-s"><%- update_time %></span>
+			<% if(user && user.name == author) {%>
+			<a class="txt-margin-s" href="/edit/<%= article_id %>">编辑</a>
+			<a class="txt-margin-s" href="/del/<%= article_id %>">删除</a>
+			<% } %>
+		</div>
 	</div>
 
     <div class="markdown-body article-content">
         <%- content %>
     </div>
 
-	<div class="m-top-s">
-		<span><%- author %></span><span  class="txt-margin-s"><%- update_time %></span>
-		<% if(user && user.name == author) {%>
-		  <a class="txt-margin-s" href="/edit/<%= article_id %>">编辑</a>
-		  <a class="txt-margin-s" href="/del/<%= article_id %>">删除</a>
-		<% } %>
-	</div>
-    <p>
 
-    </p>
+
 </article>
 
 <%- include ../footer %>
