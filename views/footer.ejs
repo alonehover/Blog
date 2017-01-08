@@ -1,4 +1,21 @@
-<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js" charset="utf-8"></script>
-<script src="/script/common.js" charset="utf-8"></script>
+
+        <ul class="nav-btn"> 
+            <li class="nav-btn-item">
+                <a href="/">
+                    <img src="/img/home.png" alt="">
+                </a>
+            </li>
+            <% if (user) { %>
+            <li class="nav-btn-item">
+                <a href="/post">
+                    <img src="/img/add.png" alt="">
+                </a>
+            </li>
+            <% } %>
+        </ul>
+
+   
+    <script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js" charset="utf-8"></script>
+    <script src="/script/common.js" charset="utf-8"></script>
 </body>
 </html>

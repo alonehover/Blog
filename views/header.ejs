@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-<title>Blog</title>
+<title>小屋</title>
 <link rel="stylesheet" href="/stylesheets/base.css">
 <link rel="stylesheet" href="/stylesheets/style.css">
 <link rel="stylesheet" href="/stylesheets/markdown.css" rel="stylesheet"></link>
@@ -11,6 +11,5 @@
 </head>
 <body>
 <%- include nav %>
-<% if (flash) { %>
-  <div class="container message" style="color:red"><%= flash %></div>
-<% } %>
+
+<%- include message %>

@@ -1,0 +1,15 @@
+
+<div id="message" class="container message">
+<% if (flash) { %>
+    <script>
+        window.onload = function() {
+            var message = $("#message")
+            message.addClass("active");
+            var msg = setTimeout(function() {
+                message.removeClass("active");
+            }, 3000)
+        }
+    </script>
+    <div class="message-text"><%= flash %>ASD</div>
+<% } %>
+</div>

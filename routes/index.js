@@ -115,10 +115,7 @@ module.exports = function (app) {
       if (err) {
         return next(err);
       }
-    //   if (user != null) {
-      //
-    //   }
-      console.log(user);
+
       if (!user) {
         req.flash('info', '用户不存在!');
         return res.redirect('/login');

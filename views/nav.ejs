@@ -1,17 +1,18 @@
-<nav class="blue">
-    <section class="container nav-content">
-        <div class="nav-item"><a title="主页" href="/">home</a></div>
-        <% if (user) { %>
-        <div class="nav-item"><a title="发表" href="/post">Add</a></div>
-        <div class="user-info">
-            <div class="nav-item"><%= user.name %></div>
-            <div class="nav-item"><a title="登出" href="/logout">logout</a></div>
+<header class="black site-header">
+    <div class="nav-content">
+        <div class="container">
+            <% if (user) { %>
+            <div class="user-info">
+                <div class="nav-item"><%= user.name %></div>
+                <div class="nav-item"><a title="登出" href="/logout">logout</a></div>
+            </div>
+            <% } else { %>
+            <div class="user-info">
+                <!-- <div class="nav-item"><a title="登录" href="/login">login</a></div> -->
+                <!-- <span><a title="注册" href="/reg">register</a></span> -->
+            </div>
+            <% } %>
         </div>
-        <% } else { %>
-        <div class="user-info">
-            <div class="nav-item"><a title="登录" href="/login">login</a></div>
-            <!-- <span><a title="注册" href="/reg">register</a></span> -->
-        </div>
-        <% } %>
-    </section>
-</nav>
+    </div>
+    <h1 class="site-title">小屋</h1>
+</header>
