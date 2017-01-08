@@ -18,14 +18,8 @@ p {
     margin: 1em 0;
 }
 
-/*header {
-    padding: .5em 0;
-    border-bottom: 1px solid #cccccc;
-}*/
-
 header {
     font-size: 1.1em;
-    text-transform: uppercase;
     text-align: left;
     color: #fff;
     overflow: hidden;
@@ -66,6 +60,9 @@ img{
 .container{
     margin: 0 auto;
     max-width: 800px;
+}
+
+.overflow{
     overflow: hidden;
 }
 
@@ -79,7 +76,7 @@ img{
 
 .nav-item{
     float: left;
-    margin-left: 10px;
+    margin-left: 24px;
     line-height: 60px;
 }
 
@@ -87,10 +84,20 @@ img{
     margin-left: 0px;
 }
 
-.nav-item:hover {
-    border-bottom: 3px solid #000;
+.nav-item a{
+    display: block;
+    border-bottom: 1px solid transparent;
+    -webkit-transition: border-bottom 300ms linear;
+    -moz-transition: border-bottom 300ms linear;
+    transition: border-bottom 300ms linear;
+}
+
+.nav-item a:hover {
+    border-bottom: 1px solid #efefef;
     color: #f9f9f9;
-    -webkit-transition: border-bottom 1s linear;
+    -webkit-transition: border-bottom 300ms linear;
+    -moz-transition: border-bottom 300ms linear;
+    transition: border-bottom 300ms linear;
 }
 
 article {
@@ -175,11 +182,11 @@ article a {
 
 .card-list{
     background-color: #fff;
-    border-width: 5%;
     padding: 20px;
     margin-bottom: 10px;
     -webkit-transition: background-color .2s linear;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .05), 0 1px 4px 0 rgba(0, 0, 0, .08), 0 3px 1px -2px rgba(0, 0, 0, .2);
+    box-shadow: 4px 4px 20px -2px rgba(0, 0, 0, .05);
+    border: 1px solid rgba(200, 200, 200, .1);
 }
 
 .card-list:hover{
@@ -286,6 +293,10 @@ article a {
 .site-title{
     text-align: center;
     line-height: 240px;
+}
+
+.site-title .site-title-img{
+    width: 160px;
 }
 
 .site-header{
