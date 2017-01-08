@@ -30,7 +30,6 @@ header {
     color: #fff;
     overflow: hidden;
     width: 100%;
-    height: 280px;
 }
 
 header a {
@@ -79,10 +78,9 @@ img{
 }
 
 .nav-item{
-    padding: 20px 0;
     float: left;
-    border: 3px solid transparent;
     margin-left: 10px;
+    line-height: 60px;
 }
 
 .nav-item:first-child{
@@ -215,13 +213,15 @@ article a {
 }
 
 .article-title{
-    font-size: 28px;
-    line-height: 2.4em;
+    font-size: 2em;
+    line-height: 2.8em;
+    text-align: center;
 }
 
 .article-info{
     color: #888888;
     font-weight: lighter;
+    text-align: right;
 }
 
 .article-content{
@@ -285,9 +285,14 @@ article a {
 
 .site-title{
     text-align: center;
-    line-height: 280px;
+    line-height: 240px;
 }
 
 .site-header{
-    position: relative
+    position: relative;
+    height: 240px;
+}
+
+.site-subheader{
+    height: 60px;
 }

@@ -1,4 +1,9 @@
 <%- include ../header %>
+
+<% if (user) { %>
+<%- include ../nav_sub %>
+<% } %>
+
 <div class="container main">
 
     <form class="form article-edit" method="post">
@@ -15,4 +20,5 @@
     </form>
 
 </div>
+
 <%- include ../footer %>

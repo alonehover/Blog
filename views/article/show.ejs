@@ -1,5 +1,9 @@
 <%- include ../header %>
 
+<% if (user) { %>
+<%- include ../nav_sub %>
+<% } %>
+
 <article class="container">
 
 	<div class="article-header">
@@ -16,8 +20,6 @@
     <div class="markdown-body article-content">
         <%- content %>
     </div>
-
-
 
 </article>
 
