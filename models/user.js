@@ -1,32 +1,29 @@
-var mongodb = require('../lib/db');
+var mysql = require('../lib/db');
 var assert = require('assert');
 
 exports.save = function(user, callback){
+    var sql = "INSERT INTO users SET ?";
 
-    mongodb(function(db){
-
-        db.collection('users').insertOne(user, function(err, result){
-            db.close();
-            if (err) {
+    mysql(function(db) {
+        db.query(sql, user, function(err, res) {
+            if(err) {
                 return callback(err);
             }
-            callback(null, result);  //成功！err 为 null，并返回存储后的用户文档
-        });
-
-    });
+            callback(null, res[0])
+        })
+    })
 };
 
 exports.get = function(name, callback){
+    var sql = "SELECT * FROM users WHERE name = ?";
 
-    mongodb(function(db){
-
-        db.collection('users').findOne({"name":name},function(err,result){
-            db.close();
-            if (err) {
-                return callback(err);
+    mysql(function(db) {
+        db.query(sql, [name], function(err, res) {
+            if(err) {
+                callback(err)
             }
-            callback(null, result);
-        });
-
-    });
+            console.log(res);
+            callback(null, res[0])
+        })
+    })
 }

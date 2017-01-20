@@ -4,33 +4,30 @@ var ObjectID = require('mongodb').ObjectID;
 
 // 存文章
 exports.save = function(article, callback){
+    var sql = "INSERT  INTO articles SET ?";
 
-    mongodb(function(db){
-
-        db.collection('articles').insertOne(article, function(err, result){
-            db.close();
-            if (err) {
+    mysql(function(db){
+        db.query(sql, article, function(err, res) {
+            if(err){
                 return callback(err);
             }
-            callback(null, result);  //成功！err 为 null，并返回存储后的用户文档
-        });
-
-    });
+            callback(null, res[0]);
+        })
+    })
 };
 
 // 获取文章详情
 exports.getOne = function(aid, callback){
-    mongodb(function(db){
+    var sql = "SELECT * FROM articles WHERE id = ?";
 
-        db.collection('articles').findOne({"_id": new ObjectID(aid)},function(err, result){
-            db.close();
-            if (err) {
+    mysql(function(db){
+        db.query(sql, [aid], function(err, res) {
+            if(err){
                 return callback(err);
             }
-            callback(null, result);
-        });
-
-    });
+            callback(null, res[0]);
+        })
+    })
 };
 
 // 获取文章列表
@@ -38,7 +35,7 @@ exports.getList = function(callback){
     var sql = "SELECT * FROM articles";
     
     mysql(function(db){
-        db.query(sql, function(err, res){
+        db.query(sql, function(err, res) {
             if(err){
                 return callback(err);
             }
@@ -49,45 +46,29 @@ exports.getList = function(callback){
 
 // 编辑文章
 exports.updateArticle = function(aid, article, callback){
+    var sql = "UPDATE articles SET title = ?, content = ?, update_time = ? WHERE id = ?";
+    var now = moment().format('YYYY-MM-DD HH:mm:ss');
 
-    mongodb(function(db){
-
-        db.collection('articles').updateOne(
-          {"_id": new ObjectID(aid)},
-          {
-            $set: {
-              "title": article.title,
-              "content": article.content,
-              "update_time": moment().format('YYYY-MM-DD HH:mm:ss')
-            },
-            $currentDate: { "lastModified": true }
-          },
-          function(err, result){
-            db.close();
-            if (err) {
+    mysql(function(db){
+        db.query(sql, [article.title, article.content, now, aid], function(err, res) {
+            if(err){
                 return callback(err);
             }
-            callback(null, result);
-        });
-
-    });
+            callback(null, res[0])
+        })
+    })
 };
 
 // 删除文章
 exports.deleteArticle = function(aid, callback){
+    var sql = "DELETE FROM articles WHERE id = ?"
 
-    mongodb(function(db){
-
-        db.collection('articles').deleteOne(
-          {"_id": new ObjectID(aid)},
-          function(err, result){
-            db.close();
-            if (err) {
-                return callback(err);
+    mysql(function(db) {
+        db.query(sql, [aid], function(err, res) {
+            if(err) {
+                return callback(true);
             }
-            console.log(result);
-            callback(null, result);
-        });
-
-    });
+            callback(null, res[0])
+        })
+    })
 };

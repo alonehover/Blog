@@ -4,7 +4,7 @@
 <article class="container main">
 <% if (list.length > 0) { %>
     <% for (var i = 0; i < list.length; i++){ %>
-        <div class="card-list" data-item-id="<%= list[i]._id %>">
+        <div class="card-list" data-item-id="<%= list[i].id %>">
              <div class="content item-title">
                  <%= list[i].title %>
              </div>

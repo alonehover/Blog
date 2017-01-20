@@ -26,7 +26,7 @@ module.exports = function (app) {
 
   // 主页
   app.get('/', function (req, res, next) {
-        Article.getList(function(err,list){
+        Article.getList(function(err, list){
             if (err) {
                 console.log(err);
                 return next(err);
@@ -160,7 +160,7 @@ module.exports = function (app) {
             title : body.title,
             content : body.content,
             author : user.name,
-            creat_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+            create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
             update_time: moment().format('YYYY-MM-DD HH:mm:ss'),
         };
 
@@ -184,12 +184,12 @@ module.exports = function (app) {
           }
           console.log(result);
           res.render('article/show',{
-              article_id : id,
+              article_id : result.id,
               title : result.title,
               author: result.author,
               content : marked(result.content),
               update_time: result.update_time,
-              user : user,
+              user : "123",
               flash : req.flash('info').toString()
           });
       });
@@ -223,13 +223,12 @@ module.exports = function (app) {
         var user = req.session.user;
         var data = {
             title : body.title,
-            content : body.content,
-            author : user.name
+            content : body.content
         };
 
         Article.updateArticle(id, data, function(err, result){
             if (err) {
-              console.log('修改失败！');
+              req.flash('info', '修改失败!');
               return next(err);
             }
             req.flash('info', '编辑成功!');
