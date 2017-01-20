@@ -1,5 +1,5 @@
 var moment = require('moment');
-var mongodb = require('../lib/db');
+var mysql = require('../lib/db');
 var ObjectID = require('mongodb').ObjectID;
 
 // 存文章
@@ -35,14 +35,14 @@ exports.getOne = function(aid, callback){
 
 // 获取文章列表
 exports.getList = function(callback){
-
-    mongodb(function(db){
-
-        db.collection('articles').find().sort({_id:-1}).toArray(function(err, result){
-            if (err) {
+    var sql = "SELECT * FROM articles";
+    
+    mysql(function(db){
+        db.query(sql, function(err, res){
+            if(err){
                 return callback(err);
             }
-            callback(null, result);
+            callback(null, res);
         });
     });
 };

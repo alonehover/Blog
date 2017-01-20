@@ -15,5 +15,13 @@
 		"max": 10,
 		"min": 1,
 		"timeout": 3600000
-	}
+	},
+	"mysql": {
+        "host": "localhost",
+        "user": "user name",
+        "password": "your password",
+        "database": "your database name",
+        "connectionLimit": 10,
+        "supportBigNumbers": true
+    }
 }
