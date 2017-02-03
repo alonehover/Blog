@@ -1,5 +1,5 @@
-<%- include header %>
-<%- include nav %>
+<%- include common/header %>
+<%- include common/nav %>
 
 <article class="container main">
 <% if (list.length > 0) { %>
@@ -12,6 +12,14 @@
                  <span><%= list[i].author  %></span>
                  <small class="item-date">  <%= list[i].update_time %></small>
              </div>
+            <% if (list[i].tags) { %>
+                <div>
+                    <% var tags = list[i].tags.split(",") %>
+                    <% for (var j = 0; j < tags.length; j ++) { %>
+                        <span class="tags"><%= tags[j] %></span>
+                    <% } %>
+                </div>
+            <% } %>
         </div>
     <% } %>
 <% }else { %>
@@ -19,4 +27,4 @@
 <% } %>
 </article>
 
-<%- include footer %>
+<%- include common/footer %>

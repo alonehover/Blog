@@ -13,7 +13,6 @@ function checkLogin(req, res, next) {
   next();
 }
 
-
 function checkNotLogin(req, res, next) {
   if (req.session.user) {
     req.flash('info', '已登录!');
@@ -31,7 +30,7 @@ module.exports = function (app) {
                 console.log(err);
                 return next(err);
             }
-            res.render('index', {
+            res.render('home', {
               title: '主页',
               user: req.session.user,
               flash: req.flash('info').toString(),
@@ -43,7 +42,7 @@ module.exports = function (app) {
   // 注册显示
   app.get('/reg', checkNotLogin);
   app.get('/reg', function (req, res, next) {
-    res.render('reg', {
+    res.render('sign/reg', {
       title: '注册',
       user: req.session.user,
       flash: req.flash('info').toString()
@@ -98,7 +97,7 @@ module.exports = function (app) {
   // 登录显示
   app.get('/login', checkNotLogin);
   app.get('/login', function (req, res, next) {
-    res.render('signin', {
+    res.render('sign/signin', {
       title: '登录',
       user: req.session.user,
       flash: req.flash('info').toString()
@@ -115,7 +114,6 @@ module.exports = function (app) {
       if (err) {
         return next(err);
       }
-
       if (!user) {
         req.flash('info', '用户不存在!');
         return res.redirect('/login');
@@ -159,10 +157,13 @@ module.exports = function (app) {
         var data = {
             title : body.title,
             content : body.content,
+            tags: body.tag,
             author : user.name,
             create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
             update_time: moment().format('YYYY-MM-DD HH:mm:ss'),
         };
+
+        // console.log(body.tag.split(","));
 
         Article.save(data, function(err, result){
             if (err) {
@@ -182,14 +183,14 @@ module.exports = function (app) {
           if (err) {
               return next(err);
           }
-          console.log(result);
+          // console.log(result);
           res.render('article/show',{
               article_id : result.id,
               title : result.title,
               author: result.author,
               content : marked(result.content),
               update_time: result.update_time,
-              user : "123",
+              user : user,
               flash : req.flash('info').toString()
           });
       });
@@ -262,7 +263,7 @@ module.exports = function (app) {
     if (err.code == 'NotFound') {
       res.render('404');
     } else {
-      res.render('error', { error: err });
+      res.render('common/error', { error: err });
     }
   });
 

@@ -233,7 +233,6 @@ article a {
 
 .article-content{
     border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
     padding: 20px 10px;
 }
 
@@ -306,4 +305,11 @@ article a {
 
 .site-subheader{
     height: 60px;
+}
+
+.tags{
+    padding: 2px 4px;
+    background: #999;
+    border-radius: 5px;
+    line-height: 28px;
 }

@@ -1,8 +1,4 @@
-<%- include ../header %>
-
-<% if (user) { %>
-<%- include ../nav_sub %>
-<% } %>
+<%- include ../common/header %>
 
 <div class="container main">
 
@@ -10,10 +6,16 @@
         <div class="form-group">
             <input class="form-control" type="text" name="title" id="" placeholder="文章名称" value="<%= title %>">
         </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" name="tag" id="" placeholder="文章标签">
+        </div>
+
         <div class="form-group">
             <textarea class="form-control article-text" name="content" placeholder="文章内容"><%= content %>
             </textarea>
         </div>
+        
         <div class="form-group">
             <button class="btn" type="submit" name="button">提交</button>
         </div>
@@ -21,4 +23,4 @@
 
 </div>
 
-<%- include ../footer %>
+<%- include ../common/footer %>
