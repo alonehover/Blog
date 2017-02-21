@@ -163,8 +163,6 @@ module.exports = function (app) {
             update_time: moment().format('YYYY-MM-DD HH:mm:ss'),
         };
 
-        // console.log(body.tag.split(","));
-
         Article.save(data, function(err, result){
             if (err) {
               console.log('存储失败！');
@@ -184,7 +182,7 @@ module.exports = function (app) {
               return next(err);
           }
           // console.log(result);
-          res.render('article/show',{
+          res.render('article/show', {
               article_id : result.id,
               title : result.title,
               author: result.author,
