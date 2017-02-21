@@ -18,9 +18,9 @@
 	},
 	"mysql": {
         "host": "localhost",
-        "user": "user name",
-        "password": "your password",
-        "database": "your database name",
+        "user": "root",
+        "password": "ah",
+        "database": "blog",
         "connectionLimit": 10,
         "supportBigNumbers": true
     }

@@ -4,7 +4,7 @@
 <article class="container main">
 <% if (list.length > 0) { %>
     <% for (var i = 0; i < list.length; i++){ %>
-        <div class="card-list" data-item-id="<%= list[i].id %>">
+        <a class="card-list" href="/detail/<%= list[i].id %>">
              <div class="content item-title">
                  <%= list[i].title %>
              </div>
@@ -20,7 +20,7 @@
                     <% } %>
                 </div>
             <% } %>
-        </div>
+        </a>
     <% } %>
 <% }else { %>
     <div class="txt-center">还木有文章噢～～～</div>

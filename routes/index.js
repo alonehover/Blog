@@ -64,6 +64,8 @@ module.exports = function (app) {
       return res.redirect('/reg');
     }
 
+    console.log(body);
+
     User.get(name, function (err, user) {
       if (err) {
         console.log(err);
@@ -80,6 +82,7 @@ module.exports = function (app) {
           email: email,
       };
 
+      console.log(newUser);
       console.log("准备插入数据");
       User.save(newUser, function (err) {
         if (err) {
@@ -174,7 +177,7 @@ module.exports = function (app) {
   });
 
   //  显示文章详情
-  app.get('/post/:aid', function(req,res,next){
+  app.get('/detail/:aid', function(req,res,next){
       var id = req.params.aid;
       var user = req.session.user;
       Article.getOne(id, function(err, result){
@@ -231,7 +234,7 @@ module.exports = function (app) {
               return next(err);
             }
             req.flash('info', '编辑成功!');
-            res.redirect('/post/' + id);
+            res.redirect('/detail/' + id);
         });
   });
 

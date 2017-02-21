@@ -181,6 +181,7 @@ article a {
 }
 
 .card-list{
+    display: block;
     background-color: #fff;
     padding: 20px;
     margin-bottom: 10px;
@@ -308,6 +309,7 @@ article a {
 }
 
 .tags{
+    color: #fff;
     padding: 2px 4px;
     background: #999;
     border-radius: 5px;
