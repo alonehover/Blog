@@ -1,3 +1,12 @@
+ - $(function() {
+ -     $(".card-list").click(function() {
+ -         var id = $(this).data("item-id");
+ -         location.href = "/post/" + id;
+ -         window.localStorage.setItem("appUrl", "app.mytff");
+ -     });
+ - });
+
+
 HTMLTextAreaElement.prototype.getCaretPosition = function () {
 //return the caret position of the textarea
  	return this.selectionStart;
