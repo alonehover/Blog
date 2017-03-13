@@ -221,12 +221,13 @@ article a {
 }
 
 .article-title{
-    font-size: 2em;
-    line-height: 2.8em;
+    font-size: 24px;
+    padding: 2em 0;
     text-align: center;
 }
 
 .article-info{
+    font-size: 14px;
     color: #888888;
     font-weight: lighter;
     text-align: right;
