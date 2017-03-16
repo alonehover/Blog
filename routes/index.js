@@ -13,7 +13,6 @@ function checkLogin(req, res, next) {
   next();
 }
 
-
 function checkNotLogin(req, res, next) {
   if (req.session.user) {
     req.flash('info', '已登录!');
