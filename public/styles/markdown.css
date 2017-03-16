@@ -8,7 +8,7 @@
   text-size-adjust: 100%;
   color: #333;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   word-wrap: break-word;
 }
@@ -449,7 +449,7 @@
   padding-bottom: 0.2em;
   margin: 0;
   font-size: 85%;
-  /*background-color: rgba(0,0,0,0.04);*/
+  background: rgba(0,0,0,0.04);
   border-radius: 3px;
 }
 
@@ -466,6 +466,7 @@
   word-break: normal;
   white-space: pre;
   border: 0;
+  background: #282c34;
 }
 
 .markdown-body .highlight {
@@ -493,7 +494,7 @@
   max-width: initial;
   padding: 20px 10px;
   margin: 0;
-  overflow: initial;
+  // overflow: initial;
   line-height: inherit;
   word-wrap: normal;
   border: 0;

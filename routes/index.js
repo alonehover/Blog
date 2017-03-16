@@ -13,7 +13,6 @@ function checkLogin(req, res, next) {
   next();
 }
 
-
 function checkNotLogin(req, res, next) {
   if (req.session.user) {
     req.flash('info', '已登录!');
@@ -32,7 +31,7 @@ module.exports = function (app) {
                 return next(err);
             }
             res.render('index', {
-              title: '主页',
+              title: '首页',
               user: req.session.user,
               flash: req.flash('info').toString(),
               list: list
