@@ -1,19 +1,19 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var flash = require('connect-flash');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
 
 
 
-var routes = require('./routes/index');
-var config = require('./config');
+const routes = require('./routes');
+const config = require('./config');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,7 +35,7 @@ app.use(flash());
 routes(app);
 
 app.listen(process.env.PORT || config.app, function() {
-  console.log('Express server listening on port ' + config.app);
+    console.log('Express server listening on port ' + config.app);
 });
 
 // catch 404 and forward to error handler
@@ -50,23 +50,38 @@ app.listen(process.env.PORT || config.app, function() {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
+
+app.use(function (req, res, next) {
+    next({
+      code: 'NotFound',
+      message: 'NotFound ' + req.path
+    });
+});
+
+app.use(function(err, req, res, next) {
+    if (err.code == 'NotFound') {
+        res.render('404');
+    } else {
+        res.render('error', { error: err });
+    }
 });
 
 module.exports = app;
