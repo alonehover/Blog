@@ -5,16 +5,29 @@
 <% } %>
 
 <div class="container main">
-    <form class="form article-edit" method="post">
+    <form id="articleForm" class="form article-edit" method="post">
         <div class="form-group">
             <input class="form-control" type="text" name="title" id="" placeholder="文章名称">
         </div>
+        
         <div class="form-group">
-            <textarea class="form-control article-text" name="content" placeholder="文章内容"></textarea>
-        </div>
-        <div class="form-group">
-            <button class="btn" type="submit" name="button">提交</button>
+            <input id="content" type="hidden" name="content" value=""></textarea>
+            <div id="editor" class="form-control article-text"></div>
         </div>
     </form>
+
 </div>
+
+<script src="/ace/ace.js"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+
+    var toSubmit = function() {
+        $("#content").val(editor.getValue())
+        $("#articleForm").submit()
+    }
+</script>
+
 <%- include ../footer %>

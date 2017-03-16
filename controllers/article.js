@@ -16,8 +16,8 @@ module.exports = {
         app.get("/edit/:aid", signMiddleware.checkLogin)
         app.get("/edit/:aid", this.articleEditView)
         
-        app.post("/post", signMiddleware.checkLogin)
-        app.post("/post", this.toArticleEdit)
+        app.post("/edit/:aid", signMiddleware.checkLogin)
+        app.post("/edit/:aid", this.toArticleEdit)
 
         app.get("/del/:aid", signMiddleware.checkLogin)
         app.get("/del/:aid", this.articleDel)
