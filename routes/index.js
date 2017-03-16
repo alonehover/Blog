@@ -31,7 +31,7 @@ module.exports = function (app) {
                 return next(err);
             }
             res.render('index', {
-              title: '云沐小屋',
+              title: '首页',
               user: req.session.user,
               flash: req.flash('info').toString(),
               list: list
