@@ -4,15 +4,15 @@
 <%- include ../nav_sub %>
 <% } %>
 
-<div class="container main">
+<div>
     <form id="articleForm" class="form article-edit" method="post">
         <div class="form-group">
             <input class="form-control" type="text" name="title" id="" placeholder="文章名称" value="<%= title %>">
         </div>
-        <div class="form-group">
-            <input id="content" type="hidden" name="content" value=""></textarea>
-            <div id="editor" class="form-control article-text"><%= content %></div>
-        </div>
+        
+        <input id="content" type="hidden" name="content" value=""></textarea>
+
+        <div id="editor" class="form-control article-text"><%= content %></div>
     </form>
 
     <div class="form-group">

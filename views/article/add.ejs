@@ -4,18 +4,20 @@
 <%- include ../nav_sub %>
 <% } %>
 
-<div class="container main">
+<div>
     <form id="articleForm" class="form article-edit" method="post">
         <div class="form-group">
             <input class="form-control" type="text" name="title" id="" placeholder="文章名称">
         </div>
         
-        <div class="form-group">
-            <input id="content" type="hidden" name="content" value=""></textarea>
-            <div id="editor" class="form-control article-text"></div>
-        </div>
-    </form>
+        <input id="content" type="hidden" name="content" value=""></textarea>
 
+        <div id="editor" class="form-control article-text"></div>
+    </form>
+    
+    <div class="form-group">
+        <button class="btn" name="button" onclick="toSubmit()">提交</button>     
+    </div>
 </div>
 
 <script src="/ace/ace.js"></script>
