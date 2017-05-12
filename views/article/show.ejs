@@ -7,20 +7,22 @@
 <section class="article-container">
 	<div class="container-title">
         <%- title %>
-		<!-- <div><span><%- author %></span><span  class="txt-margin-s"><%- update_time %></span></div> -->
     </div>
-	<!-- <div class="article-header">
-		<div class="article-info">
-			<span><%- author %></span><span  class="txt-margin-s"><%- update_time %></span>
-			<% if(user && user.name == author) {%>
-			<a class="txt-margin-s" href="/edit/<%= article_id %>">编辑</a>
-			<a class="txt-margin-s" href="/del/<%= article_id %>">删除</a>
-			<% } %>
-		</div>
-	</div> -->
 
     <div class="markdown-body article-content">
         <%- content %>
+
+		<div class="sub-info">
+			<div><%- author %></div>
+			<div  class="txt-margin-s"><%- update_time %></div>
+		</div>
+
+		<% if(user && user.name == author) {%>
+		<div class="article-option">
+			<a class="txt-margin-s" href="/edit/<%= article_id %>">编辑</a>
+			<a class="txt-margin-s" href="/del/<%= article_id %>">删除</a>
+		</div>
+		<% } %>
     </div>
 
 </section>
