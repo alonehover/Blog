@@ -11,17 +11,17 @@ module.exports = {
         app.post("/post", signMiddleware.checkLogin)
         app.post("/post", this.toPostArticle)
 
-        app.get("/post/:aid", this.articleDetail)
+        app.get("/article/:aid", this.articleDetail)
 
         app.get("/edit/:aid", signMiddleware.checkLogin)
         app.get("/edit/:aid", this.articleEditView)
-        
+
         app.post("/edit/:aid", signMiddleware.checkLogin)
         app.post("/edit/:aid", this.toArticleEdit)
 
         app.get("/del/:aid", signMiddleware.checkLogin)
         app.get("/del/:aid", this.articleDel)
-    },  
+    },
 
     postView: function(req, res, next) {
         res.render('article/add', {
