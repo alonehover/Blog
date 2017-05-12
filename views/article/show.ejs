@@ -1,26 +1,28 @@
-<%- include ../header %>
+<%- include ../common/header %>
 
 <% if (user) { %>
-<%- include ../nav_sub %>
+<%- include ../common/nav_sub %>
 <% } %>
 
-<article class="container">
-
-	<div class="article-header">
-		<h1 class="article-title"><%- title %></h1>
-		<div class="article-info">			
+<section class="article-container">
+	<div class="container-title">
+        <%- title %>
+		<!-- <div><span><%- author %></span><span  class="txt-margin-s"><%- update_time %></span></div> -->
+    </div>
+	<!-- <div class="article-header">
+		<div class="article-info">
 			<span><%- author %></span><span  class="txt-margin-s"><%- update_time %></span>
 			<% if(user && user.name == author) {%>
 			<a class="txt-margin-s" href="/edit/<%= article_id %>">编辑</a>
 			<a class="txt-margin-s" href="/del/<%= article_id %>">删除</a>
 			<% } %>
 		</div>
-	</div>
+	</div> -->
 
     <div class="markdown-body article-content">
         <%- content %>
     </div>
 
-</article>
+</section>
 
-<%- include ../footer %>
+<%- include ../common/footer %>

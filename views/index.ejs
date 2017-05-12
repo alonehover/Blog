@@ -1,22 +1,33 @@
-<%- include header %>
-<%- include nav %>
+<%- include common/header %>
 
-<article class="container main">
-<% if (list.length > 0) { %>
-    <% for (var i = 0; i < list.length; i++){ %>
-        <div class="card-list" data-item-id="<%= list[i]._id %>">
-             <div class="content item-title">
-                 <%= list[i].title %>
-             </div>
-			 <div class="item-header m-top-xs">
-                 <span><%= list[i].author  %></span>
-                 <small class="item-date">  <%= list[i].update_time %></small>
-             </div>
-        </div>
-    <% } %>
-<% }else { %>
-    <div class="txt-center">还木有文章噢～～～</div>
+<% if (user) { %>
+<div class="user-info">
+    <div class="nav-item"><%= user.name %></div>
+    <div class="nav-item"><a title="登出" href="/logout">logout</a></div>
+</div>
 <% } %>
-</article>
 
-<%- include footer %>
+<section class="article-container">
+    <div class="container-title">
+        小屋
+    </div>
+    <div class="article-list">
+        <% if (list.length > 0) { %>
+            <% for (var i = 0; i < list.length; i++){ %>
+                <a class="article-list-item" href="/article/<%= list[i]._id %>">
+                     <div class="content item-title">
+                         <%= list[i].title %>
+                     </div>
+        			 <div class="item-author">
+                         <span><%= list[i].author  %></span>
+                         <small class="item-date">  <%= list[i].update_time %></small>
+                     </div>
+                </a>
+            <% } %>
+        <% }else { %>
+            <div class="txt-center">还木有文章噢～～～</div>
+        <% } %>
+    </div>
+</section>
+
+<%- include common/footer %>
