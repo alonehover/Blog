@@ -1,21 +1,18 @@
 <%- include ../common/header %>
 
-<% if (user) { %>
 <%- include ../common/nav_sub %>
-<% } %>
 
 <section class="article-container">
 	<div class="container-title">
         <%- title %>
+		<div class="sub-info">
+			<span><%- author %></span>
+			<span class="txt-margin-s"><%- update_time %></span>
+		</div>
     </div>
 
     <div class="markdown-body article-content">
         <%- content %>
-
-		<div class="sub-info">
-			<div><%- author %></div>
-			<div  class="txt-margin-s"><%- update_time %></div>
-		</div>
 
 		<% if(user && user.name == author) {%>
 		<div class="article-option">

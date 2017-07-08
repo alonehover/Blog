@@ -1,11 +1,6 @@
 <%- include common/header %>
 
-<% if (user) { %>
-<div class="user-info">
-    <div class="nav-item"><%= user.name %></div>
-    <div class="nav-item"><a title="登出" href="/logout">logout</a></div>
-</div>
-<% } %>
+<%- include ./common/nav_sub %>
 
 <section class="article-container">
     <div class="container-title">
