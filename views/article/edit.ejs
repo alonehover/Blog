@@ -1,35 +1,36 @@
 <%- include ../common/header %>
 
-<% if (user) { %>
-<%- include ../common/nav_sub %>
-<% } %>
-
-<div>
+<div class="container">
     <form id="articleForm" class="form article-edit" method="post">
-        <div class="form-group">
-            <input class="form-control" type="text" name="title" id="" placeholder="文章名称" value="<%= title %>">
+        <div class="">
+            <input class="form-control edit-title" type="text" name="title" id="" placeholder="文章名称" value="<%= title %>">
         </div>
-        
-        <input id="content" type="hidden" name="content" value=""></textarea>
-
-        <div id="editor" class="form-control article-text"><%= content %></div>
+        <div class="nav-editor">
+            <button class="btn" name="button" type="button" onclick="toSubmit(this)">Publish</button>
+        </div>
+        <div class="">
+            <input id="content" type="hidden" name="content" value=""></textarea>
+            <div id="editor" class="form-control edit-content"><%= content %></div>
+        </div>
     </form>
-
-    <div class="form-group">
-        <button class="btn" name="button" onclick="toSubmit()">提交</button>
-    </div>
 </div>
+
+<%- include ../common/footer %>
 
 <script src="/ace/ace.js"></script>
 <script>
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.getSession().setMode("ace/mode/javascript");
+    editor.setTheme("ace/theme/github");
+    // editor.getSession().setMode("ace/mode/javascript");
+    editor.getSession().setTabSize(4);
 
-    var toSubmit = function() {
+    var toSubmit = function(e) {
         $("#content").val(editor.getValue())
         $("#articleForm").submit()
     }
-</script>
 
-<%- include ../common/footer %>
+    $(function() {
+        var editor_height = window.innerHeight;
+        $("#editor").height(editor_height - 120);
+    })
+</script>

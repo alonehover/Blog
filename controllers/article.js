@@ -104,7 +104,7 @@ module.exports = {
               return next(err);
             }
             req.flash('info', '编辑成功!');
-            res.redirect('/post/' + id);
+            res.redirect('/article/' + id);
         });
     },
 

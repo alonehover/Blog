@@ -12,7 +12,6 @@ header {
 }
 
 header a {
-    text-decoration: none;
     color: #fff;
 }
 
@@ -41,28 +40,28 @@ header a {
 .nav-item{
     float: left;
     margin-left: 24px;
-    line-height: 60px;
+    line-height: 100px;
 }
 
 .nav-item:first-child{
     margin-left: 0px;
 }
 
-.nav-item a{
-    display: block;
-    border-bottom: 1px solid transparent;
-    -webkit-transition: border-bottom 300ms linear;
-    -moz-transition: border-bottom 300ms linear;
-    transition: border-bottom 300ms linear;
-}
-
-.nav-item a:hover {
-    border-bottom: 1px solid #efefef;
-    color: #f9f9f9;
-    -webkit-transition: border-bottom 300ms linear;
-    -moz-transition: border-bottom 300ms linear;
-    transition: border-bottom 300ms linear;
-}
+// .nav-item a{
+//     display: block;
+//     border-bottom: 1px solid transparent;
+//     -webkit-transition: border-bottom 300ms linear;
+//     -moz-transition: border-bottom 300ms linear;
+//     transition: border-bottom 300ms linear;
+// }
+//
+// .nav-item a:hover {
+//     border-bottom: 1px solid #efefef;
+//     color: #f9f9f9;
+//     -webkit-transition: border-bottom 300ms linear;
+//     -moz-transition: border-bottom 300ms linear;
+//     transition: border-bottom 300ms linear;
+// }
 
 article {
     font-size: 16px;
@@ -72,11 +71,6 @@ article a {
     text-decoration: none;
 }
 
-.sign{
-    padding-top: 40px;
-    width: 360px;
-    margin: 0 auto;
-}
 .info {
     font-size: 14px;
 }
@@ -113,7 +107,16 @@ article a {
 }
 
 .user-info{
-    float: right;
+    width: 80%;
+    margin: 0 auto;
+    color: #FFF;
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+        color: #EEE;
+        display: block;
+    }
 }
 
 .message{
@@ -238,7 +241,7 @@ article a {
     position: fixed;
     bottom: 40px;
     right: 40px;
-    width: 40px;
+    width: 48px;
     list-style: none;
 }
 
@@ -248,6 +251,9 @@ article a {
 
 .nav-btn .nav-btn-item{
     margin-bottom: 20px;
+    background: rgba(200, 200, 200, .2);
+    padding: 10px;
+    border-radius: 50%;
 }
 
 .site-title{
@@ -265,7 +271,16 @@ article a {
 }
 
 .site-subheader{
-    height: 60px;
+    height: 100px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .user-info {
+        margin: 0;
+        width: auto;
+    }
 }
 
 .tags{
