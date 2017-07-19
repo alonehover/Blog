@@ -10,3 +10,11 @@
 
 `npm install`
 
+#### run
+
+1. run mongo first
+   `mongod`
+   
+2. `npm start`
+
+3. open browser in `localhost:3000`
