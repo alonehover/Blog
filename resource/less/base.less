@@ -6,24 +6,26 @@
 
 html, body{
     height: 100%;
-    font-size: 14px;
-    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
 }
 
 body {
-    background-color: #222;
+    background: #164165;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #164165,#61c7ee);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top,#164165,#61c7ee); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#global-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/img/top_bg.jpg') center fixed;
-    background-repeat-y: no-repeat;
-    z-index: -1;
-}
+// #global-bg {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background: url('/img/top_bg.jpg') center fixed;
+//     background-repeat-y: no-repeat;
+//     z-index: -1;
+// }
 
 input:active,
 input:focus,
