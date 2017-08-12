@@ -4,24 +4,24 @@ const md5 = require('../lib/md5');
 
 module.exports = {
     init: function(app) {
-        app.get("/reg", signMiddleware.checkNotLogin)
-        app.get("/reg", this.signUpView)
+        app.get("/signup", signMiddleware.checkNotLogin)
+        app.get("/signup", this.signUpView)
 
-        app.post("/reg", signMiddleware.checkNotLogin)
-        app.post("/reg", this.toSignUp)
+        app.post("/signup", signMiddleware.checkNotLogin)
+        app.post("/signup", this.toSignUp)
 
-        app.get("/login", signMiddleware.checkNotLogin)
-        app.get("/login", this.signInView)
+        app.get("/signin", signMiddleware.checkNotLogin)
+        app.get("/signin", this.signInView)
 
-        app.post("/login", signMiddleware.checkNotLogin)
-        app.post("/login", this.toSignIn)
+        app.post("/signin", signMiddleware.checkNotLogin)
+        app.post("/signin", this.toSignIn)
 
-        app.get("/logout", signMiddleware.checkLogin)
-        app.get("/logout", this.toSignOut)
+        app.get("/signout", signMiddleware.checkLogin)
+        app.get("/signout", this.toSignOut)
     },
-    
+
     signUpView: function(req, res, next) {
-        res.render('reg', {
+        res.render('sign/signup', {
             title: '注册',
             user: req.session.user,
             flash: req.flash('info').toString()
@@ -54,6 +54,7 @@ module.exports = {
                 name: name,
                 password: md5(password),
                 email: email,
+                create_time: new Date().getTime()
             };
 
             User.save(newUser, function (err) {
@@ -70,7 +71,7 @@ module.exports = {
     },
 
     signInView: function(req, res, next) {
-        res.render('signin', {
+        res.render('sign/signin', {
             title: '登录',
             user: req.session.user,
             flash: req.flash('info').toString()
@@ -102,7 +103,7 @@ module.exports = {
             res.redirect('/');
         });
     },
-    
+
     toSignOut: function(req, res, next) {
         req.session.user = null;
         req.flash('info', '登出成功!');

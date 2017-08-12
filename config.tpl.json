@@ -1,5 +1,6 @@
 {
     "app": 3000,
+	"db": "mysql",
 	"session": {
 		"resave": true,
 		"saveUninitialized": true,
@@ -11,9 +12,16 @@
 	"mongo": {
 		"host": "localhost",
 		"port": 27017,
-		"db": "blog",
+		"db": "name",
 		"max": 10,
 		"min": 1,
 		"timeout": 3600000
+	},
+	"mysql": {
+        "connectionLimit" : 10,
+		"host"     : "localhost",
+		"user"     : "",
+		"password" : "",
+        "database" : ""
 	}
 }

@@ -1,0 +1,11 @@
+extends ../index
+
+block main
+    .container.main
+        form.sign(method="post")
+            .form-group
+                input.form-control(type="text", name="name", placeholder="username")
+            .form-group
+                input.form-control(type="password", name="password", placeholder="password")
+            .form-group.txt-right
+                button.btn(type="submit") 登录

@@ -8,7 +8,7 @@
 
 .article-container {
     max-width: 1000px;
-    // box-shadow: 0 0 50px rgba(55, 55, 55, 0.3);
+    min-width: 320px;
     margin: 100px auto 100px;
     position: absolute;
     top: 0;
@@ -68,6 +68,10 @@
         color: #888;
     }
 
+    .item-date {
+        margin-left: 12px;
+    }
+
     &:hover{
         color: #7DB9DE;
     }
@@ -78,33 +82,4 @@
     background: rgba(255,255,255,.9);
     box-shadow: 0 10px 30px rgba(0, 0, 0,.2);
     border-radius: 0 0 6px 6px;
-}
-
-@media screen and (max-width: 720px) {
-    .article-container {
-        width: 100%;
-        margin: 0;
-    }
-}
-
-@media screen and (max-width: 475px) {
-    .article-container {
-        background: rgba(255,255,255,0.3);
-        min-height: 100%;
-
-        .container-title {
-            padding: 80px 24px;
-            font-size: 32px;
-        }
-    }
-
-    .article-list {
-        padding: 32px 24px;
-    }
-
-    .article-list-item {
-        .item-title {
-            font-size: 16px;
-        }
-    }
 }

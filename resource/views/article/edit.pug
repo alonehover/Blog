@@ -1,0 +1,33 @@
+extends ../index
+
+block main
+    .article-container
+        form#articleForm.form.article-edit(method="post")
+            div
+                input.form-control.edit-title(type="text", name="title", placeholder="文章名称", value=title)
+            .nav-editor
+                button#submitBtn.btn(name="button")
+                    i.iconfont.icon-publishad
+                    span Publish
+            div
+                input#content(name="content", type="hidden", value="")
+                #editor.form-control.edit-content= content
+                
+block script
+    script(src="/ace/ace.js")
+    script.
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/github");
+        // editor.getSession().setMode("ace/mode/javascript");
+        editor.getSession().setTabSize(4);
+
+        $(function() {
+            var editor_height = window.innerHeight;
+            $("#editor").height(editor_height - 120);
+            
+            $("#submitBtn").click(function() {
+                $("#content").val(editor.getValue())
+                $("#articleForm").submit()
+            })
+        })
+    
