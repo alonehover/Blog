@@ -9,7 +9,7 @@ module.exports = {
         app.get("/post", this.postView)
 
         app.post("/post", signMiddleware.checkLogin)
-        app.post("/post", this.toPostArticle)
+        app.post("/post", this.addArticle)
 
         app.get("/article/:aid", this.articleDetail)
 
@@ -17,7 +17,7 @@ module.exports = {
         app.get("/edit/:aid", this.articleEditView)
 
         app.post("/edit/:aid", signMiddleware.checkLogin)
-        app.post("/edit/:aid", this.toArticleEdit)
+        app.post("/edit/:aid", this.editArticle)
 
         app.get("/del/:aid", signMiddleware.checkLogin)
         app.get("/del/:aid", this.articleDel)
@@ -31,21 +31,21 @@ module.exports = {
         });
     },
 
-    toPostArticle: function(req, res, next) {
+    addArticle: function(req, res, next) {
         const body = req.body;
         const user = req.session.user;
         const data = {
             title : body.title,
             content : body.content,
             author : user.name,
-            creat_time: moment().format('YYYY-MM-DD HH:mm:ss'),
-            update_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+            create_time: new Date().getTime(),
+            update_time: new Date().getTime(),
         };
 
         Article.save(data, function(err, result) {
             if (err) {
-            console.log('存储失败！');
-            return next(err);
+                console.log('存储失败！');
+                return next(err);
             }
             req.flash('info', '添加成功!');
             res.redirect('/');
@@ -59,7 +59,7 @@ module.exports = {
             if (err) {
                 return next(err);
             }
-            console.log(result);
+
             res.render('article/show', {
                 article_id : id,
                 title : result.title,
@@ -88,14 +88,15 @@ module.exports = {
         });
     },
 
-    toArticleEdit: function(req, res, next) {
+    editArticle: function(req, res, next) {
         const id = req.params.aid;
         const body = req.body;
         const user = req.session.user;
         const data = {
             title : body.title,
             content : body.content,
-            author : user.name
+            author : user.name,
+            update_time: new Date().getTime()
         };
 
         Article.updateArticle(id, data, function(err, result){

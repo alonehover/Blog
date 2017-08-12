@@ -1,0 +1,26 @@
+extends ../index
+
+block css
+	link(rel="stylesheet", href="/styles/markdown.css")
+	link(rel="stylesheet", href="/styles/highlight.min.css")
+		
+block main
+	section.article-container
+		.container-title
+			span= title
+			.sub-info
+				span= author
+				span.txt-margin-s= update_time
+				
+		.markdown-body.article-content
+			
+			div !{content}
+			
+			if user && user.name == author
+				.article-option
+					a(href="/edit/"+ article_id) 编辑
+					a.txt-margin-s(href="/del/"+ article_id) 删除
+block script
+	script(src="/script/highlight.min.js")
+	script.
+		hljs.initHighlightingOnLoad();

@@ -1,93 +1,66 @@
 var moment = require('moment');
-var mongodb = require('../lib/db');
-var ObjectID = require('mongodb').ObjectID;
-
+var dbQuery = require('../lib/db');
+const _table = 'articles'
 // 存文章
 exports.save = function(article, callback){
+    dbQuery('INSERT INTO ?? SET ?', [_table, article], function(err, res){
+        if(err) {
+            console.log(err);
+            return callback(err);
+        }
 
-    mongodb(function(db){
-
-        db.collection('articles').insertOne(article, function(err, result){
-            db.close();
-            if (err) {
-                return callback(err);
-            }
-            callback(null, result);  //成功！err 为 null，并返回存储后的用户文档
-        });
-
+        callback(null, res[0]);
     });
 };
 
 // 获取文章详情
 exports.getOne = function(aid, callback){
-    mongodb(function(db){
+    dbQuery('SELECT * FROM ?? WHERE `id` = ?', [_table, aid], function(err, res){
+        if(err) {
+            console.log("sqlerr");
+            return callback(err);
+        }
 
-        db.collection('articles').findOne({"_id": new ObjectID(aid)},function(err, result){
-            db.close();
-            if (err) {
-                return callback(err);
-            }
-            callback(null, result);
-        });
+        res[0].create_time = moment(+res[0].create_time).format('YYYY-MM-DD')
+        res[0].update_time = moment(+res[0].update_time).format('YYYY-MM-DD')
 
+        callback(null, res[0]);
     });
 };
 
 // 获取文章列表
 exports.getList = function(callback){
+    dbQuery('SELECT * FROM ?? ORDER BY ?? DESC', [_table, 'create_time'], function(err, res) {
+        if(err) {
+            return callback(err);
+        }
 
-    mongodb(function(db){
+        res.forEach(function(item) {
+            item.create_time = moment(+item.create_time).format('YYYY-MM-DD')
+            item.update_time = moment(+item.update_time).format('YYYY-MM-DD')
+        })
 
-        db.collection('articles').find().sort({_id:-1}).toArray(function(err, result){
-            if (err) {
-                return callback(err);
-            }
-            callback(null, result);
-        });
+        callback(null, res);
     });
 };
 
 // 编辑文章
 exports.updateArticle = function(aid, article, callback){
+    dbQuery('UPDATE ?? SET ? WHERE `id` = ?', [_table, article, aid], function(err, res) {
+        if(err) {
+            return callback(err);
+        }
 
-    mongodb(function(db){
-
-        db.collection('articles').updateOne(
-          {"_id": new ObjectID(aid)},
-          {
-            $set: {
-              "title": article.title,
-              "content": article.content,
-              "update_time": moment().format('YYYY-MM-DD HH:mm:ss')
-            },
-            $currentDate: { "lastModified": true }
-          },
-          function(err, result){
-            db.close();
-            if (err) {
-                return callback(err);
-            }
-            callback(null, result);
-        });
-
+        callback(null, res);
     });
 };
 
 // 删除文章
 exports.deleteArticle = function(aid, callback){
-
-    mongodb(function(db){
-
-        db.collection('articles').deleteOne(
-          {"_id": new ObjectID(aid)},
-          function(err, result){
-            db.close();
-            if (err) {
-                return callback(err);
-            }
-            console.log(result);
-            callback(null, result);
-        });
-
+    dbQuery('DELETE FROM ?? WHERE `id` = ?', [_table, aid], function(err, res) {
+        if(err) {
+            return callback(err);
+        }
+        callback(null, res);
     });
 };

@@ -4,4 +4,12 @@ $(function() {
         location.href = "/post/" + id;
         window.localStorage.setItem("appUrl", "app.mytff");
     });
+
+    window.message = function() {
+        var message = $("#message")
+        message.addClass("active");
+        var msg = setTimeout(function() {
+            message.removeClass("active");
+        }, 3000)
+    }
 });

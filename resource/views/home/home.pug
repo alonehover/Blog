@@ -1,0 +1,15 @@
+section.article-container
+    .container-title
+        if user
+            span #{user.name}の
+        span 小屋
+    .article-list
+        if list.length > 0
+            each item in list
+                a.article-list-item(href="/article/" + item.id)
+                    .content.item-title= item.title
+                    .item-author
+                        span= item.author
+                        small.item-date= item.update_time
+        else
+            .txt-center 还木有文章哟 ~~~
