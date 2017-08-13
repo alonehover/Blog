@@ -37,7 +37,7 @@ module.exports = {
 
         if (password_re !== password) {
             req.flash('info', '两次输入的密码不一致!');
-            return res.redirect('/reg');
+            return res.redirect('/signup');
         }
 
         User.get(name, function (err, user) {
@@ -47,7 +47,7 @@ module.exports = {
             }
             if (user) {
                 req.flash('info', '用户已存在!');
-                return res.redirect('/reg');
+                return res.redirect('/signup');
             }
 
             const newUser = {
@@ -89,12 +89,12 @@ module.exports = {
 
             if (!user) {
                 req.flash('info', '用户不存在!');
-                return res.redirect('/login');
+                return res.redirect('/signin');
             }
 
             if (user.password != md5(password)) {
                 req.flash('info', '密码错误!');
-                return res.redirect('/login');
+                return res.redirect('/signin');
             }
 
             delete user.password;
