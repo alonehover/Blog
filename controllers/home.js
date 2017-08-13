@@ -16,7 +16,7 @@ module.exports = {
             }
 
             list.forEach(function(item) {
-                item.description = marked(item.content).replace(/<[^>]+>/g,"").slice(0, 40);
+                item.description = marked(item.content).replace(/<[^>]+>/g,"").slice(0, 200);
             });
 
             res.render('index', {
