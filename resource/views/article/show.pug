@@ -2,7 +2,7 @@ extends ../index
 
 block css
 	link(rel="stylesheet", href="/styles/markdown.css")
-	link(rel="stylesheet", href="/styles/highlight.min.css")
+	link(rel="stylesheet", href="https://cdn.bootcss.com/highlight.js/9.9.0/styles/atom-one-dark.min.css")
 		
 block main
 	section.article-container
@@ -21,6 +21,6 @@ block main
 					a(href="/edit/"+ article_id) 编辑
 					a.txt-margin-s(href="/del/"+ article_id) 删除
 block script
-	script(src="/script/highlight.min.js")
+	script(src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js")
 	script.
 		hljs.initHighlightingOnLoad();

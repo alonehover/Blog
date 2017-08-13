@@ -1,6 +1,4 @@
 #message.container.message
     if flash
-        script.
-            (function() {window.message()})
         .message-text
-            #{flash}
+            span= flash

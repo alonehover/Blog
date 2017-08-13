@@ -17,9 +17,7 @@ html
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(hm, s);
             })();
-    body
-        include common/message
-                
+    body        
         block main
             include home/home
         
@@ -34,9 +32,20 @@ html
                 li.nav-bottom-item
                     a(href="/signout")
                         i.iconfont.icon-signout
-                                        
-                            
-        
         script(src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js")
-        script(src="/script/common.js")
+        script.
+            $(function() {
+                window.message = function() {
+                    var message = $("#message")
+                    message.addClass("active");
+                    var msg = setTimeout(function() {
+                        message.removeClass("active");
+                    }, 3000)
+                };
+                var flash = "#{flash}"
+                if(!!flash) {
+                    window.message();
+                }
+            });
         block script
+        include common/message
