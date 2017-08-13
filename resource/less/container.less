@@ -51,7 +51,6 @@
     padding: 24px 12px;
     border-bottom: 1px solid #efefef;
     cursor: pointer;
-    transition: color 200ms linear;
     outline: none;
     -webkit-tap-highlight-color: transparent;
 
@@ -61,19 +60,28 @@
 
     .item-title {
         font-size: 24px;
+        font-weight: bold;
         margin-bottom: 12px;
     }
 
+    &:hover{
+        .item-title {
+            color: #5ec1e8;
+            transition: color 200ms linear;
+        }
+    }
+
+    .item-desc {
+        color: #666;
+    }
+
     .item-author {
-        color: #888;
+        color: #bbb;
+        margin-bottom: 12px
     }
 
     .item-date {
-        margin-left: 12px;
-    }
-
-    &:hover{
-        color: #7DB9DE;
+        margin-right: 12px;
     }
 }
 

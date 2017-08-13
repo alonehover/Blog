@@ -1,4 +1,5 @@
 // var os = require('os');
+const marked = require('marked');
 const moment = require('moment');
 var Article = require('../models/article');
 
@@ -13,6 +14,10 @@ module.exports = {
             if (err) {
                 return next(err);
             }
+
+            list.forEach(function(item) {
+                item.description = marked(item.content).replace(/<[^>]+>/g,"").slice(0, 40);
+            });
 
             res.render('index', {
                 title: '首页',

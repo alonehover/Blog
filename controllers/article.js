@@ -63,6 +63,7 @@ module.exports = {
             res.render('article/show', {
                 article_id : id,
                 title : result.title,
+                description : result.title + "--" + marked(result.content).replace(/<[^>]+>/g,"").slice(0, 40),
                 author: result.author,
                 content : marked(result.content),
                 update_time: result.update_time,
