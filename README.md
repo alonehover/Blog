@@ -1,6 +1,6 @@
 # blog
 
-[![Build Status](https://travis-ci.org/alonehover/blog.svg?branch=master)](https://travis-ci.org/alonehover/Blog)
+[![Build Status](https://travis-ci.org/alonehover/Blog.svg?branch=master)](https://travis-ci.org/alonehover/Blog)
 
 #### 环境需要
 * mysql
