@@ -15,10 +15,6 @@ module.exports = {
                 return next(err);
             }
 
-            list.forEach(function(item) {
-                item.description = marked(item.content).replace(/<[^>]+>/g,"").slice(0, 200);
-            });
-
             res.render('index', {
                 title: '首页',
                 user: req.session.user,

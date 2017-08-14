@@ -36,6 +36,7 @@ module.exports = {
         const user = req.session.user;
         const data = {
             title : body.title,
+            description : marked(body.content).replace(/<[^>]+>/g,"").slice(0, 200),
             content : body.content,
             author : user.name,
             create_time: new Date().getTime(),
@@ -63,7 +64,7 @@ module.exports = {
             res.render('article/show', {
                 article_id : id,
                 title : result.title,
-                description : marked(result.content).replace(/<[^>]+>/g,"").slice(0, 100),
+                description : result.description,
                 author: result.author,
                 content : marked(result.content),
                 update_time: result.update_time,
@@ -95,6 +96,7 @@ module.exports = {
         const user = req.session.user;
         const data = {
             title : body.title,
+            description : marked(body.content).replace(/<[^>]+>/g,"").slice(0, 200),
             content : body.content,
             author : user.name,
             update_time: new Date().getTime()
