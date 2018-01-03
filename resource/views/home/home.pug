@@ -1,16 +1,32 @@
-section.article-container
-    .container-title
-        if user
-            span #{user.name}の
-        span 小屋
-    .article-list
-        if list.length > 0
-            each item in list
-                a.article-list-item(href="/article/" + item.id)
-                    .item-author
-                        small.item-date= item.update_time
-                        span= item.author
-                    .content.item-title= item.title
-                    .item-desc= item.description
-        else
-            .txt-center 还木有文章哟 ~~~
+extends ../index
+
+block main
+    section.wrap
+        header.nav
+            .site-name
+                img.site-logo(src="/img/logo.png", alt="")
+                if user
+                    span #{user.name}の
+                span 小屋
+            .site-menu
+
+        section
+            .category
+            .list
+                if list.length > 0
+                    each item in list
+                        a.list-item(href="/article/" + item.id, title=item.title)
+                            .item-head
+                                .item-title= item.title
+                                .head-border
+                            .item-content !{item.description || item.title + "......"}
+                            .item-foot
+                                .item-author= item.author                        
+                                .item-date= item.update_time
+                else
+                    .txt-center 还木有文章哟 ~~~
+
+        footer.footer
+            .footer-left 
+                .copyright ©2018 小屋
+                .txt-help 态度决定一切！

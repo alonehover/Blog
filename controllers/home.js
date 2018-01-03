@@ -15,7 +15,7 @@ module.exports = {
                 return next(err);
             }
 
-            res.render('index', {
+            res.render('home/home', {
                 title: '首页',
                 user: req.session.user,
                 flash: req.flash('info').toString(),

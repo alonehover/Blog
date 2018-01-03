@@ -1,26 +1,37 @@
 extends ../index
 
 block css
-	link(rel="stylesheet", href="/styles/markdown.css")
-	link(rel="stylesheet", href="https://cdn.bootcss.com/highlight.js/9.9.0/styles/atom-one-dark.min.css")
-		
+    link(rel="stylesheet", href="/styles/markdown.css")
+    link(rel="stylesheet", href="https://cdn.bootcss.com/highlight.js/9.9.0/styles/atom-one-dark.min.css")
+        
 block main
-	section.article-container
-		.container-title
-			span= title
-			.sub-info
-				span= author
-				span.txt-margin-s= update_time
-				
-		.markdown-body.article-content
-			
-			div !{content}
-			
-			if user && user.name == author
-				.article-option
-					a(href="/edit/"+ article_id) 编辑
-					a.txt-margin-s(href="/del/"+ article_id) 删除
+    section.wrap
+        //- header.nav
+        //-     .site-name
+        //-         img.site-logo(src="/img/logo.png", alt="")
+        //-         if user
+        //-             span #{user.name}の
+        //-         span 小屋
+        //-     .site-menu
+
+        section.container
+            .head-title
+                .title-text= title
+                .head-border
+            .markdown-body.main-content
+                div !{content}
+                if user && user.name == author
+                    .article-option
+                        a(href="/edit/"+ article_id) 编辑
+                        a.txt-margin-s(href="/del/"+ article_id) 删除
+            .foot-info
+                .author= author
+                .date= update_time
+        footer.footer
+            .footer-left 
+                .copyright ©2018 小屋
+                .txt-help 态度决定一切！
 block script
-	script(src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js")
-	script.
-		hljs.initHighlightingOnLoad();
+    script(src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js")
+    script.
+        hljs.initHighlightingOnLoad();
