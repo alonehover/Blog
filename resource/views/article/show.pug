@@ -18,12 +18,13 @@ block main
             .head-title
                 .title-text= title
                 .head-border
+            if user && user.name == author
+            .article-option
+                a(href="/edit/"+ article_id) 编辑
+                a(href="/del/"+ article_id) 删除
             .markdown-body.main-content
                 div !{content}
-                if user && user.name == author
-                    .article-option
-                        a(href="/edit/"+ article_id) 编辑
-                        a.txt-margin-s(href="/del/"+ article_id) 删除
+                
             .foot-info
                 .author= author
                 .date= update_time
