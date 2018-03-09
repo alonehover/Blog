@@ -3,7 +3,7 @@ extends ../index
 block css
     link(rel="stylesheet", href="/styles/markdown.css")
     link(rel="stylesheet", href="https://cdn.bootcss.com/highlight.js/9.9.0/styles/atom-one-dark.min.css")
-        
+
 block main
     section.wrap
         //- header.nav
@@ -19,17 +19,17 @@ block main
                 .title-text= title
                 .head-border
             if user && user.name == author
-            .article-option
-                a(href="/edit/"+ article_id) 编辑
-                a(href="/del/"+ article_id) 删除
+                .article-option
+                    a(href="/edit/"+ article_id) 编辑
+                    a(href="/del/"+ article_id) 删除
             .markdown-body.main-content
                 div !{content}
-                
+
             .foot-info
                 .author= author
                 .date= update_time
         footer.footer
-            .footer-left 
+            .footer-left
                 .copyright ©2018 小屋
                 .txt-help 态度决定一切！
 block script
